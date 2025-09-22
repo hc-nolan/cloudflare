@@ -93,3 +93,9 @@ tls {
 ```
 
 Or with Caddy JSON to the `acme` module: [`challenges.dns.provider.resolvers: ["1.1.1.1"]`](https://caddyserver.com/docs/json/apps/tls/automation/policies/issuer/acme/challenges/dns/resolvers/).
+
+### Error: `expected 1 zone, got 0 for ...`
+
+In order for the DNS challenge to succeed, Cloudflare's `1.1.1.1` must be the resolver for your domain. For instance, if your domain happens to be defined in `/etc/hosts`, or being resolved by a local DNS server, the challenge will fail with this error.
+
+Fixing this issue will vary depending on your specific setup. For example, see [#96](https://github.com/caddy-dns/cloudflare/issues/96).
